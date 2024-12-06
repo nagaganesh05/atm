@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM machine</title>
+    <style>
+        
+
+        #main{
+            margin: auto;
+            border: 1px solid black;
+            box-shadow: 2px 2px 2px 2px #C9E6F0;
+            width: fit-content;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: #EBEAFF;
+           
+        }
+        h2{
+            text-align: center;
+        }
+        #display{
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+        }
+        #enter{
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            &:hover{
+                border-radius: 3px;
+            }
+        }
+
+        #withdraw{
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            color: #fff;
+            background-color: #FF2929;
+            border-radius: 5px;
+            &:hover{
+                background-color: #FF9C73;
+            }
+        }
+
+        #deposit{
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #88C273;
+            &:hover{
+                background-color: #B1D690;
+            }
+        }
+
+        #checkbalance{
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #FFF7D1;
+            &:hover{
+                background-color: #FFF6E9;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h2>ATM</h2>
+        <input type="text" id="display" name="display" disabled><br>
+        <input type="text" id="enter" name="enter"><br>
+
+        <div id="btns">
+            <button id="withdraw" onclick="withdraw()">Withdraw</button><br>
+            <button id="deposit" onclick="deposit()">Deposit</button><br>
+            <button id="checkbalance" onclick="checking()">Check Balance</button><br>
+        </div>
+    </div>
+
+    <script>
+        let balance = 0;
+        const display = document.getElementById("display");
+        const enter = document.getElementById("enter");
+
+
+        function deposit(){
+            const amount = Number(enter.value);
+            balance += amount;
+            display.value = balance
+        }
+
+
+        function withdraw(){
+            const amount = Number(enter.value);
+            if(amount > balance){
+                alert("insufficient balance");
+            }
+            else{
+                balance -= amount;
+                display.value = balance;
+            }
+        }
+
+        function checking(){
+            display.value=balance;
+        }
+    </script>
+</body>
+</html>
